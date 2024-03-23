@@ -5,8 +5,8 @@ services:
     #   context: .
     #   dockerfile: Dockerfile.multi
     #   target: api-build
-    image: ghcr.io/danny-avila/librechat-dev-api:latest
-    container_name: LibreChat-API
+    image: ghcr.io/z2x/librechat-dev-api:latest
+    container_name: LibreChat-API-Z2X
     ports:
       - 3080:3080
     depends_on:
