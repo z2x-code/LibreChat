@@ -3,6 +3,7 @@ export enum FileSources {
   firebase = 'firebase',
   openai = 'openai',
   s3 = 's3',
+  vectordb = 'vectordb',
 }
 
 export enum FileContext {
@@ -12,6 +13,11 @@ export enum FileContext {
   image_generation = 'image_generation',
   assistants_output = 'assistants_output',
   message_attachment = 'message_attachment',
+  filename = 'filename',
+  updatedAt = 'updatedAt',
+  source = 'source',
+  context = 'context',
+  bytes = 'bytes',
 }
 
 export type EndpointFileConfig = {

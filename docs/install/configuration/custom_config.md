@@ -126,7 +126,7 @@ endpoints:
     # (optional) Models that support retrieval, will default to latest known OpenAI models that support the feature
     # retrievalModels: ["gpt-4-turbo-preview"]
     # (optional) Assistant Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
-    # capabilities: ["code_interpreter", "retrieval", "actions", "tools"]
+    # capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
   custom:
     - name: "Mistral"
       apiKey: "${MISTRAL_API_KEY}"
@@ -202,6 +202,12 @@ This example configuration file sets up LibreChat with detailed options across s
 - **Type**: String = "local" | ["firebase"](../../features/firebase.md)
 - **Description**: Determines where to save user uploaded/generated files. Defaults to `"local"` if omitted.
 - **Example**: `fileStrategy: "firebase"`
+
+### Image Links
+- **Key**: `secureImageLinks`
+- **Type**: Boolean
+- **Description**: Whether or not to secure access to image links that are hosted locally by the app. Default: false.
+- **Example**: `secureImageLinks: true`
 
 ### File Configuration
 - **Key**: `fileConfig`
@@ -475,7 +481,7 @@ endpoints:
     # (optional) Models that support retrieval, will default to latest known OpenAI models that support the feature
     # retrievalModels: ["gpt-4-turbo-preview"]
     # (optional) Assistant Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
-    # capabilities: ["code_interpreter", "retrieval", "actions", "tools"]
+    # capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
 ```
 > This configuration enables the builder interface for assistants, sets a polling interval of 500ms to check for run updates, and establishes a timeout of 10 seconds for assistant run operations.
 
@@ -538,9 +544,10 @@ In addition to custom endpoints, you can configure settings specific to the assi
 > Specifies the assistant capabilities available to all users for the assistants endpoint.
 
 - **Type**: Array/List of Strings
-- **Example**: `capabilities: ["code_interpreter", "retrieval", "actions", "tools"]`
+- **Example**: `capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]`
 - **Description**: Defines the assistant capabilities that are available to all users for the assistants endpoint. You can omit the capabilities you wish to exclude from the list. The available capabilities are:
   - `code_interpreter`: Enables code interpretation capabilities for the assistant.
+  - `image_vision`: Enables unofficial vision support for uploaded images.
   - `retrieval`: Enables retrieval capabilities for the assistant.
   - `actions`: Enables action capabilities for the assistant.
   - `tools`: Enables tool capabilities for the assistant.

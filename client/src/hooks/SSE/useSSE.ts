@@ -192,10 +192,19 @@ export default function useSSE(submission: TSubmission | null, index = 0) {
 
       let update = {} as TConversation;
       setConversation((prevState) => {
+        let title = prevState?.title;
+        const parentId = requestMessage.parentMessageId;
+        if (parentId !== Constants.NO_PARENT && title?.toLowerCase()?.includes('new chat')) {
+          const convos = queryClient.getQueryData<ConversationData>([QueryKeys.allConversations]);
+          const cachedConvo = getConversationById(convos, conversationId);
+          title = cachedConvo?.title;
+        }
+
         update = tConvoUpdateSchema.parse({
           ...prevState,
           conversationId,
           thread_id,
+          title,
           messages: [requestMessage.messageId, responseMessage.messageId],
         }) as TConversation;
 
@@ -251,7 +260,8 @@ export default function useSSE(submission: TSubmission | null, index = 0) {
       let update = {} as TConversation;
       setConversation((prevState) => {
         let title = prevState?.title;
-        if (parentMessageId !== Constants.NO_PARENT && title?.toLowerCase()?.includes('new chat')) {
+        const parentId = isRegenerate ? message?.overrideParentMessageId : parentMessageId;
+        if (parentId !== Constants.NO_PARENT && title?.toLowerCase()?.includes('new chat')) {
           const convos = queryClient.getQueryData<ConversationData>([QueryKeys.allConversations]);
           const cachedConvo = getConversationById(convos, conversationId);
           title = cachedConvo?.title;
@@ -502,10 +512,7 @@ export default function useSSE(submission: TSubmission | null, index = 0) {
   );
 
   useEffect(() => {
-    if (submission === null) {
-      return;
-    }
-    if (Object.keys(submission).length === 0) {
+    if (submission === null || Object.keys(submission).length === 0) {
       return;
     }
 
