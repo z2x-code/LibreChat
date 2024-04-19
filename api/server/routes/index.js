@@ -1,3 +1,4 @@
+const manager = require('./manager');
 const ask = require('./ask');
 const edit = require('./edit');
 const messages = require('./messages');
@@ -20,6 +21,7 @@ const files = require('./files');
 const staticRoute = require('./static');
 
 module.exports = {
+  manager,
   search,
   ask,
   edit,
