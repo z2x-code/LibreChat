@@ -11,12 +11,12 @@ cache: true
 interface:
   # Privacy policy settings
   privacyPolicy:
-    externalUrl: 'https://librechat.ai/privacy-policy'
+    externalUrl: 'https://pokapoka.fun'
     openNewTab: true
 
   # Terms of service
   termsOfService:
-    externalUrl: 'https://librechat.ai/tos'
+    externalUrl: 'https://pokapoka.fun'
     openNewTab: true
 
 # Example Registration Object Structure (optional)
