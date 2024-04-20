@@ -92,6 +92,9 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
                   : localize('com_nav_welcome_message')}
               </div>
             )}
+            <div className="relative mb-3 h-[250px] w-[250px]">
+              <img src="/assets/wechat.jpg" alt="" />
+            </div>
           </div>
         </div>
       </Tooltip>
