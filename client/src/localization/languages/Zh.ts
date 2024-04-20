@@ -314,7 +314,7 @@ export default {
   com_endpoint_skip_hover: '跳过补全步骤， 检查最终答案和生成步骤',
   com_endpoint_config_key: '设置API Key',
   com_endpoint_assistant_placeholder: '请从右侧面板中选择助手',
-  com_endpoint_config_placeholder: '在顶部菜单设置API KEY',
+  com_endpoint_config_placeholder: '扫码加微信让Poka帮你开通使用权限吧',
   com_endpoint_config_key_for: '设置API Key：',
   com_endpoint_config_key_name: '密钥',
   com_endpoint_config_value: '输入值：',
