@@ -69,7 +69,7 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
-  - pymdownx.keys    
+  - pymdownx.keys
   - attr_list
   - pymdownx.superfences:
       custom_fences:
@@ -109,7 +109,7 @@ extra:
       link: https://discord.librechat.ai
       name: Discord
     - icon: fontawesome/brands/github
-      link: https://librechat.ai
+      link: https://chat.pokapoka.fun
       name: GitHub
     - icon: fontawesome/brands/youtube
       link: https://yt.librechat.ai
@@ -125,4 +125,4 @@ extra:
       name: Hugging Face
 
 copyright:
-  © 2024 <a href="https://librechat.ai/" target="_blank" rel="noopener">LibreChat</a>
+  © 2024 <a href="https://chat.pokapoka.fun/" target="_blank" rel="noopener">LibreChat</a>

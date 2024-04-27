@@ -655,8 +655,8 @@ class OpenAIClient extends BaseClient {
       configOptions.basePath = 'https://openrouter.ai/api/v1';
       configOptions.baseOptions = {
         headers: {
-          'HTTP-Referer': 'https://librechat.ai',
-          'X-Title': 'LibreChat',
+          'HTTP-Referer': 'https://chat.pokapoka.fun',
+          'X-Title': 'PokaPoka',
         },
       };
     }
@@ -1001,7 +1001,7 @@ ${convo}
 
       if (this.useOpenRouter) {
         opts.defaultHeaders = {
-          'HTTP-Referer': 'https://librechat.ai',
+          'HTTP-Referer': 'https://chat.pokapoka.fun',
           'X-Title': 'LibreChat',
         };
       }
