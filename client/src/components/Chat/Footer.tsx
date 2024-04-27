@@ -39,7 +39,7 @@ export default function Footer() {
       ) : (
         <>
           <a href="https://pokapoka.fun" target="_blank" rel="noreferrer" className="underline">
-            {config?.appTitle || 'LibreChat'} {Constants.VERSION}
+            {config?.appTitle || 'PokaPoka'} {Constants.VERSION}
           </a>
           {' - '} {localize('com_ui_new_footer')}
         </>
