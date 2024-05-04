@@ -116,6 +116,17 @@ function Login() {
     </a>
   );
 
+  const afdian = (
+    <a
+      className="text-xs font-medium text-green-500"
+      href="https://afdian.net/a/pokapoka"
+      target="_blank"
+      rel="noreferrer"
+    >
+      {'爱发电'}
+    </a>
+  );
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-white pt-6 dark:bg-gray-900 sm:pt-0">
       <div className="absolute bottom-0 left-0 m-4">
@@ -170,6 +181,8 @@ function Login() {
           <div className="border-r-[1px] border-gray-300" />
         )}
         {termsOfServiceRender}
+        <div className="border-r-[1px] border-gray-300" />
+        {afdian}
       </div>
     </div>
   );
