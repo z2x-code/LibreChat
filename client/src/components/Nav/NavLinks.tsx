@@ -66,6 +66,22 @@ function NavLinks() {
                 {`Balance: ${parseFloat(balanceQuery.data).toFixed(2)}`}
               </div>
             )}
+
+            <div>
+              <NavLink
+                className="flex w-full cursor-pointer items-center gap-3 rounded-none px-3 py-3 text-sm text-black transition-colors duration-200 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                svg={() => <LinkIcon />}
+                text={localize('com_nav_user_update')}
+                clickHandler={() =>
+                  window.open(
+                    'https://afdian.net/order/create?plan_id=8574a2c00ac511efb66552540025c377&product_type=0&remark=' +
+                      user?.email,
+                    '_blank',
+                  )
+                }
+              />
+            </div>
+
             <Menu.Button
               className={cn(
                 'group-ui-open:bg-gray-100 dark:group-ui-open:bg-gray-700 duration-350 mt-text-sm mb-1 flex h-11 w-full items-center gap-2 rounded-lg px-3 py-3 text-sm transition-colors hover:bg-gray-100 dark:hover:bg-gray-700',

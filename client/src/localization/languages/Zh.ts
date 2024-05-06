@@ -394,6 +394,7 @@ export default {
   com_nav_send_message: '发送消息',
   com_nav_log_out: '注销',
   com_nav_user: '默认用户',
+  com_nav_user_update: '升级为 VIP',
   com_nav_clear_conversation: '清空对话',
   com_nav_clear_conversation_confirm_message: '请是否清空所有对话？该操作无法撤销',
   com_nav_help_faq: '帮助',
