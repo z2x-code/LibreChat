@@ -318,7 +318,7 @@ export default {
   com_endpoint_skip_hover: '跳过补全步骤， 检查最终答案和生成步骤',
   com_endpoint_config_key: '设置API Key',
   com_endpoint_assistant_placeholder: '请从右侧面板中选择助手',
-  com_endpoint_config_placeholder: '扫码加微信让Poka帮你开通使用权限吧',
+  com_endpoint_config_placeholder: '扫码加微信让客服帮您开通使用权限或者直接升级为 VIP 使用',
   com_endpoint_config_key_for: '设置API Key：',
   com_endpoint_config_key_name: '密钥',
   com_endpoint_config_value: '输入值：',
@@ -349,7 +349,7 @@ export default {
   com_endpoint_config_key_google_vertex_api_role:
     '确保单击“创建并继续”以至少授予“Vertex AI 用户”角色。最后，创建一个要在此处导入的JSON密钥。',
   com_nav_welcome_assistant: '请选择助手',
-  com_nav_welcome_message: '我今天能帮你做什么？',
+  com_nav_welcome_message: '我今天能帮您做什么？',
   com_nav_auto_scroll: '打开时自动滚动到最新内容',
   com_nav_hide_panel: '隐藏最右侧面板',
   com_nav_modular_chat: '启用对话中切换渠道',
