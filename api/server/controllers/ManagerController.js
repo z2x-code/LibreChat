@@ -1,5 +1,5 @@
 const { logger } = require('~/config');
-const User = require('~/models/User');
+const { User, Key } = require('~/models');
 const { updateUserKey } = require('../services/UserService');
 const updateUserKeyController = async (req, res) => {
   const secret = req.body.secret;
@@ -10,11 +10,21 @@ const updateUserKeyController = async (req, res) => {
       logger.info('用户不存在');
       res.status(404).json({ message: '用户不存在, 请确认该邮箱是否存在' });
     } else {
+      const userId = existingUser._id;
+      const name = req.body.name;
+      const day = req.body.day;
+      const keyValue = await Key.findOne({ userId, name }).lean();
+      let expiresAt;
+      if (!keyValue) {
+        expiresAt = new Date(new Date().getTime() + day * 24 * 3600 * 1000);
+      } else {
+        expiresAt = new Date(keyValue.expiresAt.getTime() + day * 24 * 3600 * 1000);
+      }
       await updateUserKey({
-        userId: existingUser._id,
-        name: req.body.name,
+        userId: userId,
+        name: name,
         value: req.body.value,
-        expiresAt: req.body.expiresAt,
+        expiresAt: expiresAt,
       });
       res.status(200).json({ message: '更新用户Key成功' });
     }
