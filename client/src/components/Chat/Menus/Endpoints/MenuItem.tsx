@@ -126,12 +126,7 @@ const MenuItem: FC<MenuItemProps> = ({
                     e.stopPropagation();
                     setDialogOpen(true);
                   }}
-                >
-                  <div className={cn('invisible group-hover:visible', expiryTime ? 'text-xs' : '')}>
-                    {localize('com_endpoint_config_key')}
-                  </div>
-                  <Settings className={cn(expiryTime ? 'icon-sm' : 'icon-md stroke-1')} />
-                </button>
+                ></button>
               </div>
             ) : null}
             {selected && (
