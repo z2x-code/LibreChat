@@ -5,6 +5,7 @@ import AssistantPanel from './AssistantPanel';
 import { useChatContext } from '~/Providers';
 import ActionsPanel from './ActionsPanel';
 import { Panel } from '~/common';
+import { useAuthContext } from '~/hooks';
 
 export default function PanelSwitch() {
   const { conversation, index } = useChatContext();
@@ -14,6 +15,7 @@ export default function PanelSwitch() {
   );
   const [action, setAction] = useState<Action | undefined>(undefined);
   const { data: actions = [] } = useGetActionsQuery();
+  const { user, isAuthenticated } = useAuthContext();
 
   useEffect(() => {
     if (conversation?.assistant_id) {
@@ -34,7 +36,7 @@ export default function PanelSwitch() {
         setCurrentAssistantId={setCurrentAssistantId}
       />
     );
-  } else if (activePanel === Panel.builder) {
+  } else if (activePanel === Panel.builder && user?.role === 'ADMIN') {
     return (
       <AssistantPanel
         index={index}

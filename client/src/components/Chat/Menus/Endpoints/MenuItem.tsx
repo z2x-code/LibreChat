@@ -6,7 +6,7 @@ import { useGetEndpointsQuery } from 'librechat-data-provider/react-query';
 import type { TConversation } from 'librechat-data-provider';
 import type { FC } from 'react';
 import { cn, getConvoSwitchLogic, getEndpointField, getIconKey } from '~/utils';
-import { useLocalize, useUserKey, useDefaultConvo } from '~/hooks';
+import { useLocalize, useUserKey, useDefaultConvo, useAuthContext } from '~/hooks';
 import { SetKeyDialog } from '~/components/Input/SetKeyDialog';
 import { useChatContext } from '~/Providers';
 import { icons } from './Icons';
@@ -39,6 +39,7 @@ const MenuItem: FC<MenuItemProps> = ({
   const { getExpiry } = useUserKey(endpoint);
   const localize = useLocalize();
   const expiryTime = getExpiry();
+  const { user, isAuthenticated } = useAuthContext();
 
   const onSelectEndpoint = (newEndpoint: EModelEndpoint) => {
     if (!newEndpoint) {
@@ -111,7 +112,7 @@ const MenuItem: FC<MenuItemProps> = ({
             </div>
           </div>
           <div className="flex items-center gap-2">
-            {userProvidesKey ? (
+            {userProvidesKey && user?.role === 'ADMIN' ? (
               <div className="text-token-text-primary" key={`set-key-${endpoint}`}>
                 <button
                   className={cn(
@@ -126,7 +127,12 @@ const MenuItem: FC<MenuItemProps> = ({
                     e.stopPropagation();
                     setDialogOpen(true);
                   }}
-                ></button>
+                >
+                  <div className={cn('invisible group-hover:visible', expiryTime ? 'text-xs' : '')}>
+                    {localize('com_endpoint_config_key')}
+                  </div>
+                  <Settings className={cn(expiryTime ? 'icon-sm' : 'icon-md stroke-1')} />
+                </button>
               </div>
             ) : null}
             {selected && (
