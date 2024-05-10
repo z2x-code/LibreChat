@@ -73,11 +73,7 @@ function NavLinks() {
                 svg={() => <LinkIcon />}
                 text={localize('com_nav_user_update')}
                 clickHandler={() =>
-                  window.open(
-                    'https://afdian.net/order/create?plan_id=8574a2c00ac511efb66552540025c377&product_type=0&remark=' +
-                      user?.email,
-                    '_blank',
-                  )
+                  window.open(`${startupConfig?.rechargeURL}${user?.email}`, '_blank')
                 }
               />
             </div>

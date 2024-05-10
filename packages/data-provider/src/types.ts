@@ -250,6 +250,7 @@ export type TStartupConfig = {
   checkBalance: boolean;
   showBirthdayIcon: boolean;
   helpAndFaqURL: string;
+  rechargeURL: string;
   customFooter?: string;
   modelSpecs?: TSpecsConfig;
 };
