@@ -1,5 +1,4 @@
 import { FileSources } from 'librechat-data-provider';
-import type * as InputNumberPrimitive from 'rc-input-number';
 import type { ColumnDef } from '@tanstack/react-table';
 import type { SetterOrUpdater } from 'recoil';
 import type {
@@ -115,8 +114,6 @@ export type TSetExample = (
   type: string,
   newValue: number | string | boolean | null,
 ) => void;
-
-export type OnInputNumberChange = InputNumberPrimitive.InputNumberProps['onChange'];
 
 export const defaultDebouncedDelay = 450;
 
