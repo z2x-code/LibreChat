@@ -45,25 +45,6 @@ function NavLinks() {
       <Menu as="div" className="group relative">
         {({ open }) => (
           <>
-            {startupConfig?.checkBalance &&
-              balanceQuery.data &&
-              !isNaN(parseFloat(balanceQuery.data)) && (
-              <div className="m-1 ml-3 whitespace-nowrap text-left text-sm text-black dark:text-gray-200">
-                {`Balance: ${parseFloat(balanceQuery.data).toFixed(2)}`}
-              </div>
-            )}
-
-            <div>
-              <NavLink
-                className="flex w-full cursor-pointer items-center gap-3 rounded-none px-3 py-3 text-sm text-black transition-colors duration-200 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                svg={() => <LinkIcon />}
-                text={localize('com_nav_user_update')}
-                clickHandler={() =>
-                  window.open(`${startupConfig?.rechargeURL}${user?.email}`, '_blank')
-                }
-              />
-            </div>
-
             <Menu.Button
               className={cn(
                 'group-ui-open:bg-gray-100 dark:group-ui-open:bg-gray-700 duration-350 mt-text-sm flex h-auto w-full items-center gap-2 rounded-lg p-2 text-sm transition-colors hover:bg-gray-100 dark:hover:bg-gray-800',
@@ -122,6 +103,15 @@ function NavLinks() {
                     <div className="my-1.5 h-px bg-black/10 dark:bg-white/10" role="none" />
                   </>
                 )}
+                <Menu.Item as="div">
+                  <NavLink
+                    svg={() => <LinkIcon />}
+                    text={localize('com_nav_user_update')}
+                    clickHandler={() =>
+                      window.open(`${startupConfig?.rechargeURL}${user?.email}`, '_blank')
+                    }
+                  />
+                </Menu.Item>
                 <Menu.Item as="div">
                   <NavLink
                     svg={() => <FileText className="icon-md" />}
