@@ -1,9 +1,13 @@
 const express = require('express');
 
-const { updateUserKeyController } = require('../controllers/ManagerController');
+const {
+  updateUserKeyController,
+  updateUserPluginsController,
+} = require('../controllers/ManagerController');
 
 const router = express.Router();
 
 router.put('/updateUserKey', updateUserKeyController);
+router.put('/updateUserPlugin', updateUserPluginsController);
 
 module.exports = router;
