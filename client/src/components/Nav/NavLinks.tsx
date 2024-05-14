@@ -8,10 +8,11 @@ import type { TConversation } from 'librechat-data-provider';
 import FilesView from '~/components/Chat/Input/Files/FilesView';
 import { useAuthContext } from '~/hooks/AuthContext';
 import useAvatar from '~/hooks/Messages/useAvatar';
-import { LinkIcon, GearIcon } from '~/components';
+import { LinkIcon, GearIcon, StarIcon } from '~/components';
 import { UserIcon } from '~/components/svg';
 import { useLocalize } from '~/hooks';
 import Settings from './Settings';
+import Recharge from './Recharge';
 import NavLink from './NavLink';
 import Logout from './Logout';
 import { cn } from '~/utils/';
@@ -27,6 +28,7 @@ function NavLinks() {
   });
   const [showSettings, setShowSettings] = useState(false);
   const [showFiles, setShowFiles] = useRecoilState(store.showFiles);
+  const [showRecharge, setShowRecharge] = useState(false);
 
   const activeConvo = useRecoilValue(store.conversationByIndex(0));
   const globalConvo = useRecoilValue(store.conversation) ?? ({} as TConversation);
@@ -42,6 +44,18 @@ function NavLinks() {
 
   return (
     <>
+      <Menu as="div" className="group relative">
+        <Menu.Item as="div">
+          <NavLink
+            svg={() => <StarIcon className="icon-md" />}
+            text={localize('com_nav_user_update')}
+            //clickHandler={() => setShowRecharge(true)}
+            clickHandler={() =>
+              window.open(`${startupConfig?.rechargeURL}${user?.email}`, '_blank')
+            }
+          ></NavLink>
+        </Menu.Item>
+      </Menu>
       <Menu as="div" className="group relative">
         {({ open }) => (
           <>
@@ -105,15 +119,6 @@ function NavLinks() {
                 )}
                 <Menu.Item as="div">
                   <NavLink
-                    svg={() => <LinkIcon />}
-                    text={localize('com_nav_user_update')}
-                    clickHandler={() =>
-                      window.open(`${startupConfig?.rechargeURL}${user?.email}`, '_blank')
-                    }
-                  />
-                </Menu.Item>
-                <Menu.Item as="div">
-                  <NavLink
                     svg={() => <FileText className="icon-md" />}
                     text={localize('com_nav_my_files')}
                     clickHandler={() => setShowFiles(true)}
@@ -146,6 +151,7 @@ function NavLinks() {
       </Menu>
       {showFiles && <FilesView open={showFiles} onOpenChange={setShowFiles} />}
       {showSettings && <Settings open={showSettings} onOpenChange={setShowSettings} />}
+      {showRecharge && <Recharge open={showRecharge} onOpenChange={setShowRecharge} />}
     </>
   );
 }

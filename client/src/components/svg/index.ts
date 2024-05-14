@@ -49,3 +49,4 @@ export { default as GoogleIconChat } from './GoogleIconChat';
 export { default as BirthdayIcon } from './BirthdayIcon';
 export { default as AssistantIcon } from './AssistantIcon';
 export { default as Sparkles } from './Sparkles';
+export { default as StarIcon } from './StarIcon';
