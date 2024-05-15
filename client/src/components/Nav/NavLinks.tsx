@@ -49,10 +49,10 @@ function NavLinks() {
           <NavLink
             svg={() => <StarIcon className="icon-md" />}
             text={localize('com_nav_user_update')}
-            //clickHandler={() => setShowRecharge(true)}
-            clickHandler={() =>
+            clickHandler={() => setShowRecharge(true)}
+            /*clickHandler={() =>
               window.open(`${startupConfig?.rechargeURL}${user?.email}`, '_blank')
-            }
+            }*/
           ></NavLink>
         </Menu.Item>
       </Menu>

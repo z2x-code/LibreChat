@@ -25,7 +25,9 @@ export default function Recharge({ open, onOpenChange }: TDialogProps) {
             {localize('com_nav_user_update')}
           </DialogTitle>
         </DialogHeader>
-        <div className="max-h-[373px] overflow-auto px-6 md:min-h-[373px] md:w-[680px]"></div>
+        <div className="max-h-[373px] overflow-auto px-6 md:min-h-[373px] md:w-[680px]">
+          <p>todo...</p>
+        </div>
       </DialogContent>
     </Dialog>
   );
