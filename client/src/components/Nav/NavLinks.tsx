@@ -35,11 +35,11 @@ function NavLinks() {
 
   const avatarSrc = useAvatar(user);
 
-  let conversation: TConversation | null | undefined;
+  //let conversation: TConversation | null | undefined;
   if (location.state?.from?.pathname.includes('/chat')) {
-    conversation = globalConvo;
+    //conversation = globalConvo;
   } else {
-    conversation = activeConvo;
+    //conversation = activeConvo;
   }
 
   return (
@@ -49,10 +49,10 @@ function NavLinks() {
           <NavLink
             svg={() => <StarIcon className="icon-md" />}
             text={localize('com_nav_user_update')}
-            clickHandler={() => setShowRecharge(true)}
-            /*clickHandler={() =>
+            //clickHandler={() => setShowRecharge(true)}
+            clickHandler={() =>
               window.open(`${startupConfig?.rechargeURL}${user?.email}`, '_blank')
-            }*/
+            }
           ></NavLink>
         </Menu.Item>
       </Menu>
@@ -111,8 +111,8 @@ function NavLinks() {
                   balanceQuery.data &&
                   !isNaN(parseFloat(balanceQuery.data)) && (
                   <>
-                    <div className="text-token-text-secondary ml-3 mr-2 py-2 text-sm">
-                      {`Balance: ${parseFloat(balanceQuery.data).toFixed(2)}`}
+                    <div className="ml-3 mr-2 py-2 text-sm text-green-500">
+                      {`可用积分: ${parseFloat(balanceQuery.data).toFixed(2)}`}
                     </div>
                     <div className="my-1.5 h-px bg-black/10 dark:bg-white/10" role="none" />
                   </>

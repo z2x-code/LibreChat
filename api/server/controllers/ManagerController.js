@@ -3,6 +3,7 @@ const { User, Key } = require('~/models');
 const { updateUserKey } = require('../services/UserService');
 const { updateUserPluginsService } = require('~/server/services/UserService');
 const { updateUserPluginAuth, deleteUserPluginAuth } = require('~/server/services/PluginService');
+const { Transaction } = require('~/models/Transaction');
 const updateUserKeyController = async (req, res) => {
   const secret = req.body.secret;
   if (secret === process.env.MANAGER_SECRET) {
@@ -100,7 +101,44 @@ const updateUserPluginsController = async (req, res) => {
   }
 };
 
+const updateUserBalanceController = async (req, res) => {
+  const { secret, email, amount } = req.body;
+  if (secret === process.env.MANAGER_SECRET) {
+    const existingUser = await User.findOne({ email }).lean();
+    if (!existingUser) {
+      logger.info('用户不存在');
+      res.status(404).json({ message: '用户不存在, 请确认该邮箱是否存在' });
+    } else {
+      let result;
+      try {
+        result = await Transaction.create({
+          user: existingUser._id,
+          tokenType: 'credits',
+          context: 'admin',
+          rawAmount: +amount,
+        });
+      } catch (error) {
+        res.status(402).json({ message: error.message });
+      }
+
+      // Check the result
+      if (!result?.balance) {
+        res.status(402).json({ message: 'Something went wrong while updating the balance!' });
+      }
+
+      // Done!
+      //console.purple(`Amount: ${amount} New Balance: ${result.balance}`);
+      res
+        .status(200)
+        .json({ message: '更新用户积分成功, Amount: ' + amount + ' 剩余积分: ' + result.balance });
+    }
+  } else {
+    res.status(403).send();
+  }
+};
+
 module.exports = {
   updateUserKeyController,
   updateUserPluginsController,
+  updateUserBalanceController,
 };
