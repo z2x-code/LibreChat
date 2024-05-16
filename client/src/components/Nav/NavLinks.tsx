@@ -35,11 +35,11 @@ function NavLinks() {
 
   const avatarSrc = useAvatar(user);
 
-  //let conversation: TConversation | null | undefined;
+  let conversation: TConversation | null | undefined;
   if (location.state?.from?.pathname.includes('/chat')) {
-    //conversation = globalConvo;
+    conversation = globalConvo;
   } else {
-    //conversation = activeConvo;
+    conversation = activeConvo;
   }
 
   return (
