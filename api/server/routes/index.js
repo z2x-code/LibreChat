@@ -19,6 +19,7 @@ const config = require('./config');
 const assistants = require('./assistants');
 const files = require('./files');
 const staticRoute = require('./static');
+const share = require('./share');
 
 module.exports = {
   manager,
@@ -42,4 +43,5 @@ module.exports = {
   assistants,
   files,
   staticRoute,
+  share,
 };
