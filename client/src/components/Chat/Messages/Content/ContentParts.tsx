@@ -1,12 +1,12 @@
-import { Suspense } from 'react';
+//import { Suspense } from 'react';
 import type { TMessageContentParts } from 'librechat-data-provider';
-import { UnfinishedMessage } from './MessageContent';
-import { DelayedRender } from '~/components/ui';
+//import { UnfinishedMessage } from './MessageContent';
+//import { DelayedRender } from '~/components/ui';
 import Part from './Part';
 
 const ContentParts = ({
   error,
-  unfinished,
+  //unfinished,
   isSubmitting,
   isLast,
   content,
@@ -35,13 +35,14 @@ any) => {
               />
             );
           })}
-        {!isSubmitting && unfinished && (
+        {/* Temporarily remove this */}
+        {/* {!isSubmitting && unfinished && (
           <Suspense>
             <DelayedRender delay={250}>
               <UnfinishedMessage message={message} key={`unfinished-${messageId}`} />
             </DelayedRender>
           </Suspense>
-        )}
+        )} */}
       </>
     );
   }
