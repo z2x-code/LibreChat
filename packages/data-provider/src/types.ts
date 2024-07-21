@@ -464,3 +464,5 @@ export type TGetRandomPromptsRequest = {
   limit: number;
   skip: number;
 };
+
+export type TCustomConfigSpeechResponse = { [key: string]: string };
