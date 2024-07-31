@@ -29,7 +29,7 @@ module.exports = {
   saveConvo: async (req, { conversationId, newConversationId, ...convo }, metadata) => {
     try {
       if (metadata && metadata?.context) {
-        logger.info(`[saveConvo] ${metadata.context}`);
+        logger.debug(`[saveConvo] ${metadata.context}`);
       }
       const messages = await getMessages({ conversationId }, '_id');
       const update = { ...convo, messages, user: req.user.id };
@@ -49,6 +49,9 @@ module.exports = {
       return conversation.toObject();
     } catch (error) {
       logger.error('[saveConvo] Error saving conversation', error);
+      if (metadata && metadata?.context) {
+        logger.info(`[saveConvo] ${metadata.context}`);
+      }
       return { message: 'Error saving conversation' };
     }
   },
@@ -70,12 +73,15 @@ module.exports = {
       throw new Error('Failed to save conversations in bulk.');
     }
   },
-  getConvosByPage: async (user, pageNumber = 1, pageSize = 25, isArchived = false) => {
+  getConvosByPage: async (user, pageNumber = 1, pageSize = 25, isArchived = false, tags) => {
     const query = { user };
     if (isArchived) {
       query.isArchived = true;
     } else {
       query.$or = [{ isArchived: false }, { isArchived: { $exists: false } }];
+    }
+    if (Array.isArray(tags) && tags.length > 0) {
+      query.tags = { $in: tags };
     }
     try {
       const totalConvos = (await Conversation.countDocuments(query)) || 1;

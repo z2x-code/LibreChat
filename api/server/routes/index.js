@@ -22,6 +22,7 @@ const staticRoute = require('./static');
 const share = require('./share');
 const categories = require('./categories');
 const roles = require('./roles');
+const tags = require('./tags');
 
 module.exports = {
   manager,
@@ -48,4 +49,5 @@ module.exports = {
   share,
   categories,
   roles,
+  tags,
 };
