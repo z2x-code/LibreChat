@@ -3,6 +3,8 @@
 // file deepcode ignore HardcodedNonCryptoSecret: No hardcoded secrets present in this file
 
 export default {
+  com_a11y_start: 'The AI is replying.',
+  com_a11y_end: 'The AI has finished their reply.',
   com_error_moderation:
     'It appears that the content submitted has been flagged by our moderation system for not aligning with our community guidelines. We\'re unable to proceed with this specific topic. If you have any other questions or topics you\'d like to explore, please edit your message, or create a new conversation.',
   com_error_no_user_key: 'No key found. Please provide a key and try again.',
@@ -143,9 +145,13 @@ export default {
   com_ui_manage: 'Manage',
   com_ui_variables: 'Variables',
   com_ui_variables_info:
-    'Use double braces in your text to create variables, e.g. {{example variable}}, to later fill when using the prompt.',
-  com_ui_special_variables:
-    'Special variables: Use {{current_date}} for the current date, and {{current_user}} for your given account name.',
+    'Use double braces in your text to create variables, e.g. `{{example variable}}`, to later fill when using the prompt.',
+  com_ui_special_variables: 'Special variables:',
+  com_ui_special_variables_info:
+    'Use `{{current_date}}` for the current date, and `{{current_user}}` for your given account name.',
+  com_ui_dropdown_variables: 'Dropdown variables:',
+  com_ui_dropdown_variables_info:
+    'Create custom dropdown menus for your prompts: `{{variable_name:option1|option2|option3}}`',
   com_ui_showing: 'Showing',
   com_ui_of: 'of',
   com_ui_entries: 'Entries',
@@ -220,6 +226,8 @@ export default {
   com_ui_import_conversation_file_type_error: 'Unsupported import type',
   com_ui_confirm_action: 'Confirm Action',
   com_ui_chat: 'Chat',
+  com_ui_chat_history: 'Chat History',
+  com_ui_controls: 'Controls',
   com_ui_dashboard: 'Dashboard',
   com_ui_chats: 'chats',
   com_ui_avatar: 'Avatar',
@@ -237,6 +245,7 @@ export default {
   com_ui_create_prompt: 'Create Prompt',
   com_ui_share: 'Share',
   com_ui_share_var: 'Share {0}',
+  com_ui_enter_var: 'Enter {0}',
   com_ui_copy_link: 'Copy link',
   com_ui_update_link: 'Update link',
   com_ui_create_link: 'Create link',
@@ -308,6 +317,7 @@ export default {
   com_ui_bookmarks_add_to_conversation: 'Add to current conversation',
   com_ui_bookmarks_filter: 'Filter bookmarks...',
   com_ui_no_bookmarks: 'it seems like you have no bookmarks yet. Click on a chat and add a new one',
+  com_ui_no_conversation_id: 'No conversation ID found',
   com_auth_error_login:
     'Unable to login with the information provided. Please check your credentials and try again.',
   com_auth_error_login_rl:
@@ -553,6 +563,7 @@ export default {
   com_endpoint_config_key_google_service_account: 'Create a Service Account',
   com_endpoint_config_key_google_vertex_api_role:
     'Make sure to click \'Create and Continue\' to give at least the \'Vertex AI User\' role. Lastly, create a JSON key to import here.',
+  com_nav_account_settings: 'Account Settings',
   com_nav_font_size: 'Message Font Size',
   com_nav_font_size_xs: 'Extra Small',
   com_nav_font_size_sm: 'Small',
@@ -589,6 +600,7 @@ export default {
   com_ui_drag_drop_file: 'Drag and drop a file here',
   com_ui_upload_image: 'Upload an image',
   com_ui_select_a_category: 'No category selected',
+  com_ui_clear_all: 'Clear all',
   com_nav_tool_dialog_description: 'Assistant must be saved to persist tool selections.',
   com_show_agent_settings: 'Show Agent Settings',
   com_show_completion_settings: 'Show Completion Settings',
@@ -664,6 +676,8 @@ export default {
   com_nav_audio_process_error: 'Error processing audio: {0}',
   com_nav_long_audio_warning: 'Longer texts will take longer to process.',
   com_nav_tts_init_error: 'Failed to initialize text-to-speech: {0}',
+  com_nav_tts_unsupported_error:
+    'Text-to-speech for the selected engine is not supported in this browser.',
   com_nav_source_buffer_error: 'Error setting up audio playback. Please refresh the page.',
   com_nav_media_source_init_error:
     'Unable to prepare audio player. Please check your browser settings.',
