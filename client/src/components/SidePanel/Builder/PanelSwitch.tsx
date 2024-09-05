@@ -1,8 +1,9 @@
 import { useState, useEffect, useMemo } from 'react';
 import { defaultAssistantsVersion } from 'librechat-data-provider';
 import { useGetEndpointsQuery } from 'librechat-data-provider/react-query';
-import type { Action, AssistantsEndpoint, TEndpointsConfig } from 'librechat-data-provider';
-import { useGetActionsQuery } from '~/data-provider';
+import type { Action, TEndpointsConfig, AssistantsEndpoint } from 'librechat-data-provider';
+import type { ActionsEndpoint } from '~/common';
+import { useGetActionsQuery, useGetAssistantDocsQuery } from '~/data-provider';
 import AssistantPanel from './AssistantPanel';
 import { useChatContext } from '~/Providers';
 import ActionsPanel from './ActionsPanel';
@@ -19,7 +20,10 @@ export default function PanelSwitch() {
 
   const { user, isAuthenticated } = useAuthContext();
   const { data: endpointsConfig = {} as TEndpointsConfig } = useGetEndpointsQuery();
-  const { data: actions = [] } = useGetActionsQuery(conversation?.endpoint as AssistantsEndpoint);
+  const { data: actions = [] } = useGetActionsQuery(conversation?.endpoint as ActionsEndpoint);
+  const { data: documentsMap = null } = useGetAssistantDocsQuery(conversation?.endpoint ?? '', {
+    select: (data) => new Map(data.map((dbA) => [dbA.assistant_id, dbA])),
+  });
 
   const assistantsConfig = useMemo(
     () => endpointsConfig?.[conversation?.endpoint ?? ''],
@@ -27,8 +31,9 @@ export default function PanelSwitch() {
   );
 
   useEffect(() => {
-    if (conversation?.assistant_id) {
-      setCurrentAssistantId(conversation?.assistant_id);
+    const currentId = conversation?.assistant_id ?? '';
+    if (currentId) {
+      setCurrentAssistantId(currentId);
     }
   }, [conversation?.assistant_id]);
 
@@ -46,6 +51,7 @@ export default function PanelSwitch() {
         actions={actions}
         setAction={setAction}
         activePanel={activePanel}
+        documentsMap={documentsMap}
         setActivePanel={setActivePanel}
         assistant_id={currentAssistantId}
         setCurrentAssistantId={setCurrentAssistantId}
@@ -61,6 +67,7 @@ export default function PanelSwitch() {
         action={action}
         actions={actions}
         setAction={setAction}
+        documentsMap={documentsMap}
         setActivePanel={setActivePanel}
         assistant_id={currentAssistantId}
         setCurrentAssistantId={setCurrentAssistantId}
