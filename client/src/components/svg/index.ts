@@ -56,3 +56,4 @@ export { default as StarIcon } from './StarIcon';
 export { default as SpeechIcon } from './SpeechIcon';
 export { default as SaveIcon } from './SaveIcon';
 export { default as CircleHelpIcon } from './CircleHelpIcon';
+export { default as BedrockIcon } from './BedrockIcon';
